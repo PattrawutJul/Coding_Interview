@@ -34,22 +34,22 @@ def match_list(request):
         else :
             return Response(status = status.HTTP_400_BAD_REQUEST)
 
-def is_really_match(message,pattern):
+def is_really_match(message,pattern): #main function that return true if matched otherwise false 
     t = False
     count = 0
-    if(pattern == '*'):
+    if(pattern == '*'): #pattern = '*' allows all message
         return True
     else:
-            for i in range(len(pattern)):
+            for i in range(len(pattern)): #count '*'
                 if(pattern[i] == '*'):
                     count+=1
-            if pattern[0]=='*' and count==1 :
+            if pattern[0]=='*' and count==1 : # pattern = *n -> anything ends with n
                 length = len(pattern)-1
                 return message[len(message)-length:]==pattern[1:]
-            elif pattern[-1]=='*' and count==1 :
+            elif pattern[-1]=='*' and count==1 : # pattern = n* -> anything starts with n
                 length = len(pattern)-1
                 return message[:length]==pattern[:len(pattern)-1]
-            elif count == 0 :
+            elif count == 0 :  # pattern doesn't have any *
                 if(len(pattern)!=len(message)):
                     return False
                 check = True
@@ -61,11 +61,11 @@ def is_really_match(message,pattern):
                             check = False
                             break
                 t = check
-            elif count==2 and pattern[-1]=='*' and pattern[0]=='*':
+            elif count==2 and pattern[-1]=='*' and pattern[0]=='*': # pattern = *n* -> anything contains n
                 length = len(pattern)-2
                 print(pattern[1:-1])
                 return pattern[1:-1] in message
-            else:
+            else:  # pattern *ma*i**?u*e (otherwise case) -> ordered pattern = ma > i > ?u > e
                 idx=0
                 target=''
                 length = 0
@@ -93,7 +93,7 @@ def is_really_match(message,pattern):
                 return True
     return t
 
-def transform(pattern):
+def transform(pattern): #change complicated pattern to be simple ex. **n**?**t** -> *n*?*t
     trig = False
     new_pattern = ''
     for i in range(len(pattern)):
@@ -112,7 +112,7 @@ def transform(pattern):
     return new_pattern
 
         
-def find_str(length,message,target,idx):
+def find_str(length,message,target,idx): #find target in message and return pair of boolean indicates found or not and index that related
     for i in range(len(message)):       
         if(i+length+idx > len(message)):
             return (False,-1)
