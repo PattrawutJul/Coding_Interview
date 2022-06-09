@@ -120,13 +120,18 @@ def find_str(length,message,target,idx): #find target in message and return pair
         if(message[i+idx:i+length+idx] == target):
             return (True,i+idx+length)
         if('?' in target):
+            countMark = 0
             count = 0
+            for ch in target:
+                if ch == '?':
+                    countMark+=1
             for ch in message[i+idx:i+length+idx]:
                 if ch in target:
                     count+=1
-            if count == length-1:
+            print(length)
+            print(count)
+            if count >= length-countMark:
                 return (True,i+idx+length)
          
             
     return (False,-1)
-
