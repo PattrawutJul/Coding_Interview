@@ -1,0 +1,25 @@
+TEST CASE
+
+message=&pattern=             -> is_match = true
+message=aaa&pattern=        -> is_match = false
+message=&pattern=aaa        -> is_match = false
+message=aaa&pattern=bbb   -> is_match = false
+message=aaa&pattern=aaa    -> is_match = true
+message=abc&pattern=???    -> is_match = true
+message=aab&pattern=*       -> is_match = true
+message=abbc&pattern=?b?c ->is_match = true
+message=abbc&pattern=?b?a ->is_match = false
+message=aabb&pattern=c*     ->is_match = false
+message=aabb&pattern=a*     ->is_match = true
+message=abcdefghijklmnopqrstuvwxyz&pattern=abcdefghijklmnopqrstuvwxyz  ->is_match = true
+message=batman&pattern=*n            ->is_match = true
+message=batman&pattern=*man*        ->is_match = true
+message=mabelzissocute&pattern=ma*        ->is_match = true
+message=mabelzissocute&pattern=ma*d         ->is_match = false
+message=mabelzissocute&pattern=a*d          ->is_match =false
+message=agnos&pattern=a**os        ->is_match = true
+message=agnos&pattern=*a**o*          ->is_match = true
+message=mabelzissocute&pattern=*ma*i**?u*e          ->is_match = true
+message=mabelzissocute&pattern=*??*i**??*?           ->is_match = true
+message=pattrawutjulasukhon&pattern=**att**??***jul**?*s***o**n**         ->is_match = true
+message=pattrawutjulasukhon&pattern=**att**??***jul**?*s***o**n*d*        ->is_match = false
