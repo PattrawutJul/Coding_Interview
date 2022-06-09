@@ -14,11 +14,11 @@ finally, use the command "python manage.py runserver" to deploy on local
 
 ***HOW TO TEST API***
 
-Once you finished the deployment. You'll have the link on your localhost ,for exammple http://127.0.0.1:8000/ 
+Once you finished the deployment. You'll have the link on your localhost ,for exammple, http://127.0.0.1:8000/ 
 
 then, I need you to add tag to this url with api/is_match so the result is http://127.0.0.1:8000/api/is_match
 
-then, to test , you have to send 2 parameters to this site by using query parameter ,for example http://127.0.0.1:8000/api/is_match?message=aaa&pattern=bbb (adding '?message=aaa&pattern=bbb')
+then, to test , you have to send 2 parameters to this site by using query parameter ,for example, http://127.0.0.1:8000/api/is_match?message=aaa&pattern=bbb (adding '?message=aaa&pattern=bbb')
 
 You should have seen the website like this. You may try to send 1 parameter or 0 parameter. Looks what is happenning!
 
