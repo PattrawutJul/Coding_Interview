@@ -83,11 +83,12 @@ def is_really_match(message,pattern):
                             target = ''
                         else:
                             trig = True     
-                    else:
-                        if(i == len(pattern)-1):  
-                            return message[-1] == pattern[-1]
+                    else:                       
                         target += pattern[i]
                         length += 1
+                        if(i == len(pattern)-1):  
+                            x,y = find_str(length,message,target,idx)
+                            return x
                         trig = True
                 return True
     return t
@@ -112,10 +113,10 @@ def transform(pattern):
 
         
 def find_str(length,message,target,idx):
-    for i in range(len(message)):
-        print('target: '+target+' message: '+message[i+idx:i+length+idx])
+    for i in range(len(message)):       
         if(i+length+idx > len(message)):
             return (False,-1)
+        print('target: '+target+' message: '+message[i+idx:i+length+idx])
         if(message[i+idx:i+length+idx] == target):
             return (True,i+idx+length)
         if('?' in target):
