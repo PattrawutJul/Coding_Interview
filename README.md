@@ -22,6 +22,6 @@ then, to test , you have to send 2 parameters to this site by using query parame
 
 You should have seen the website like this. You may try to send 1 parameter or 0 parameter. Looks what is happenning!
 
-***USE TESTCASE.txt to test logic
+***USE TESTCASE.txt to test logic***
 
 ![demo1](https://user-images.githubusercontent.com/107032349/172550283-1625bc40-8ddb-468c-b1a9-2e933dbfb423.jpg)
